@@ -1,0 +1,29 @@
+# ESP Screens - experimental Guition JC1060F570C_I_Y, 7-inch 1024 × 600 parallel RGB.
+packages:
+  hardware: !include ../hardware/guition-jc1060f570c.yaml
+  look: !include ../looks/standard.yaml
+  touch: !include ../features/capacitive-touch.yaml
+  backlight: !include ../features/backlight.yaml
+  camera: !include ../features/camera.yaml
+  self_test: !include ../features/self-test.yaml
+  snapshot: !include ../features/snapshot.yaml
+
+substitutions:
+  # The key of this board file; the firmware reports it so ESP Screens knows what board a screen is.
+  BOARD_ID: "jc1060f570c"
+  DEVICE_NAME: "jc1060f570c-new"
+  DEVICE_FRIENDLY_NAME: "My Guition S31"
+
+  # The glass: the panel's own pixels and its density, 1187 diagonal pixels over 7.0 inches.
+  PANEL_W: "1024"
+  PANEL_H: "600"
+  DISPLAY_DPI: "169.548"
+  # The tile grid: columns and rows of cells lying down, and standing up.
+  GRID_COLS: "4"
+  GRID_ROWS: "4"
+  GRID_COLS_PORTRAIT: "2"
+  GRID_ROWS_PORTRAIT: "7"
+  LVGL_BUFFER_SIZE: "25%"
+  SCREEN_MAX_TILES: "128"
+  SCREEN_MAX_PAGES: "24"
+

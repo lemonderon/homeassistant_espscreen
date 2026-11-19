@@ -1,0 +1,64 @@
+# Guition JC1060F570C: parallel RGB565, GT911 and PWM backlight. No audio, SD or camera sensor.
+# Pin and timing source: Guition BSP 737d0c14001f82e79ae82a41257cf0a3c86bc101, jc1060f570c.
+packages:
+  esp_idf: !include esp-idf.yaml
+
+esp32:
+  variant: esp32s31
+  toolchain: esp-idf
+  flash_size: 16MB
+  flash_mode: qio
+  flash_frequency: 80MHz
+  cpu_frequency: 320MHz
+  framework:
+    version: 6.1.1
+    source: https://github.com/esphome-libs/esp-idf/releases/download/v6.1.1/esp-idf-v6.1.1.tar.xz
+    advanced:
+      execute_from_psram: true
+
+psram:
+  mode: octal
+  speed: 200MHz
+
+display:
+  - platform: mipi_rgb
+    model: RPI
+    id: my_display
+    dimensions: 1024x600
+    auto_clear_enabled: false
+    update_interval: never
+    color_order: BGR
+    # The RGB DMA path consumes native RGB565 bytes; LVGL must not swap them.
+    byte_order: little_endian
+    pclk_pin: GPIO40
+    pclk_frequency: 34MHz
+    pclk_inverted: true
+    de_pin: GPIO43
+    hsync_pin: GPIO44
+    hsync_pulse_width: 24
+    hsync_back_porch: 160
+    hsync_front_porch: 136
+    vsync_pin: GPIO45
+    vsync_pulse_width: 1
+    vsync_back_porch: 23
+    vsync_front_porch: 11
+    # Flat list preserves the vendor's D0–D15 order.
+    data_pins: [36, 37, 38, 39, 46, 7, 35, 48, 49, 50, 51, 4, 5, 0, 1, 6]
+
+i2c:
+  - id: touch_bus
+    sda: GPIO2
+    scl: GPIO3
+    frequency: 400kHz
+
+touchscreen:
+  - platform: gt911
+    id: ts_touch
+    i2c_id: touch_bus
+    display: my_display
+
+output:
+  - platform: ledc
+    id: gpio_backlight_pwm
+    pin: GPIO52
+    frequency: 20kHz

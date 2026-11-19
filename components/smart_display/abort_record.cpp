@@ -12,7 +12,11 @@
 #include <esp_memory_utils.h>
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
+#if __has_include(<freertos/freertos_debug.h>)  // ESP-IDF 6.1 makes the snapshot API public.
+#include <freertos/freertos_debug.h>
+#else
 #include <esp_private/freertos_debug.h>
+#endif
 #include <esp_system.h>
 
 namespace abort_record {
