@@ -44,7 +44,8 @@ class FirmwareLetters(unittest.TestCase):
 
     def test_the_letters_go_only_into_a_screen_built_in_such_a_language(self):
         expression = re.search(r"(?m)^  SCRIPT_GLYPHS: '(.*)'$", CORE).group(1)
-        for language, carried in (('en', ''), ('nl', ''), ('pt-BR', ''), ('ru', core_list('cyrillic'))):
+        for language, carried in (('en', ''), ('nl', ''), ('pt-BR', ''), ('ru', core_list('cyrillic')),
+                                  ('uk', core_list('cyrillic')), ('uk-UA', core_list('cyrillic'))):
             with self.subTest(language=language):
                 values = {'LANGUAGE': language, 'SCRIPT_GLYPHS_CYRILLIC': core_list('cyrillic')}
                 self.assertEqual(profiles.resolve(expression, values), carried)
@@ -70,6 +71,13 @@ class AppLetters(unittest.TestCase):
         # Firmware from before the languages draws the old letters only, whatever the language.
         i18n.SCREEN.set({'language': 'ru', 'legacy': True})
         self.assertEqual(header_bar.clean_text('Кухня'), '')
+
+    def test_ukrainian_names_keep_distinct_letters_only_on_cyrillic_screens(self):
+        name = "Єє Іі Її Ґґ ʼ"
+        i18n.SCREEN.set({'language': 'uk', 'legacy': False})
+        self.assertEqual(header_bar.clean_text(name), name)
+        i18n.SCREEN.set({'language': 'en', 'legacy': False})
+        self.assertEqual(header_bar.clean_text(name), '')
 
 
 if __name__ == '__main__':
