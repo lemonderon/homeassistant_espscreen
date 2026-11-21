@@ -401,6 +401,10 @@ def ha_words(write):
     langs = languages()
     found = asyncio.run(fetch(list(langs)))
     frontend = frontend_words(url, list(langs))
+    english = {key: (found.get('en') or {}).get(source) for key, source in sources.items()}
+    english.update(frontend.get('en', {}))
+    english = {key: word.replace('\xa0', ' ').replace('\u202f', ' ')
+               for key, word in english.items() if isinstance(word, str)}
     status = 0
     for code, data in langs.items():
         words = found.get(code) or {}
@@ -414,6 +418,11 @@ def ha_words(write):
         # French puts a no-break space before "?", which the screens' fonts do not carry: a plain space says the same.
         own = {key: word.replace('\xa0', ' ').replace('\u202f', ' ') for key, word in own.items()}
         reference = dict(generator().flatten(data.get('screen', {}).get('ha', {})))
+        # HA can return English for an untranslated state. Keep a language's draft rather than undoing it;
+        # a real upstream translation still replaces the draft at the next refresh.
+        if code != 'en':
+            own = {key: word for key, word in own.items()
+                   if word != english.get(key) or reference.get(key) in (None, '', word)}
         if code == 'en':
             for key, word in own.items():
                 if reference.get(key) != word:

@@ -99,7 +99,7 @@
         "heat": "Обігрів",
         "cool": "Охолодження",
         "heat_cool": "Обігрів/Охолодження",
-        "auto": "Auto",
+        "auto": "Авто",
         "dry": "Осушення",
         "fan_only": "Тільки вентилятор"
       },
@@ -114,10 +114,10 @@
         "defrosting": "Розморожування"
       },
       "climate_fan": {
-        "auto": "Auto",
-        "low": "Low",
-        "medium": "Medium",
-        "high": "High",
+        "auto": "Авто",
+        "low": "Низька",
+        "medium": "Середня",
+        "high": "Висока",
         "middle": "Середній",
         "focus": "Фокус",
         "diffuse": "Дифузний",
@@ -133,14 +133,14 @@
         "horizontal": "Горизонтальний"
       },
       "humidifier_mode": {
-        "normal": "Normal",
+        "normal": "Звичайний",
         "eco": "Еко",
-        "away": "Away",
+        "away": "Не вдома",
         "boost": "Турбо",
         "comfort": "Комфорт",
         "home": "Вдома",
         "sleep": "Сон",
-        "auto": "Auto",
+        "auto": "Авто",
         "baby": "Дитина"
       },
       "humidifier_action": {
@@ -153,7 +153,7 @@
         "open": "Відчинено",
         "closed": "Зачинено",
         "opening": "Відкриття",
-        "closing": "Closing"
+        "closing": "Зачинення"
       },
       "media": {
         "playing": "Відтворюється",
@@ -175,7 +175,7 @@
         "paused": "Призупинено",
         "returning": "Повернення на док-станцію",
         "idle": "Очікування",
-        "error": "Error"
+        "error": "Помилка"
       },
       "alarm": {
         "disarmed": "Знято з охорони",
@@ -195,7 +195,7 @@
         "locking": "Блокування",
         "unlocking": "Розблокування",
         "open": "Відкрито",
-        "opening": "Opening",
+        "opening": "Відкривання",
         "jammed": "Заклинило"
       },
       "weather": {
@@ -215,14 +215,14 @@
         "exceptional": "Попередження"
       },
       "binary": {
-        "battery_on": "Low",
-        "battery_off": "Normal",
-        "battery_charging_on": "Charging",
+        "battery_on": "Низький",
+        "battery_off": "Норма",
+        "battery_charging_on": "Заряджається",
         "battery_charging_off": "Не заряджається",
         "carbon_monoxide_on": "Виявлено",
         "carbon_monoxide_off": "Не виявлено",
         "cold_on": "Охолодження",
-        "cold_off": "Normal",
+        "cold_off": "Норма",
         "connectivity_on": "Підключено",
         "connectivity_off": "Відключено",
         "door_on": "Відчинено",
@@ -232,7 +232,7 @@
         "gas_on": "Виявлено",
         "gas_off": "Не виявлено",
         "heat_on": "Нагрівання",
-        "heat_off": "Normal",
+        "heat_off": "Норма",
         "light_on": "Виявлено світло",
         "light_off": "Немає світла",
         "lock_on": "Розблоковано",
@@ -251,8 +251,8 @@
         "plug_off": "Відключено",
         "power_on": "Увімкнено",
         "power_off": "Вимкнено",
-        "presence_on": "Home",
-        "presence_off": "Away",
+        "presence_on": "Вдома",
+        "presence_off": "Не вдома",
         "problem_on": "Проблема",
         "problem_off": "OK",
         "running_on": "Запущено",

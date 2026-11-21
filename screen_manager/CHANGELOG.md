@@ -1,6 +1,6 @@
 ## Unreleased
 
-- **Ukrainian language.** The screen, editor and app have Ukrainian texts, a 24-hour clock and Ukrainian number and date formats. Cyrillic screen fonts include Є, І, Ї and Ґ in both cases. Choose Українська under Settings → Language & region, then update each screen's firmware. The translation still needs a native-speaker review.
+- **Ukrainian language.** The screen, editor and app have Ukrainian texts, a 24-hour clock and Ukrainian number and date formats. Cyrillic screen fonts include Є, І, Ї and Ґ in both cases. Choose Українська under Settings → Language & region, then update each screen's firmware. Refreshing Home Assistant's words keeps local draft translations where Home Assistant still returns English. The translation still needs a native-speaker review.
 
 ## 0.4.99 (firmware 0.62.0)
 
