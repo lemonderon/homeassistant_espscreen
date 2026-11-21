@@ -1,6 +1,7 @@
 ## Unreleased
 
 - **Ukrainian language.** The screen, editor and app have Ukrainian texts, a 24-hour clock and Ukrainian number and date formats. Cyrillic screen fonts include Є, І, Ї and Ґ in both cases. Choose Українська under Settings → Language & region, then update each screen's firmware. Refreshing Home Assistant's words keeps local draft translations where Home Assistant still returns English. The translation still needs a native-speaker review.
+- **Power-source labels follow the screen language.** Grid, generator, shore power and not connected now have screen words on sensor tiles and in the top bar. The energy diagram translates Home when Home Assistant still uses that default name, and keeps custom household names. No Home Assistant state or global name changes.
 
 ## 0.4.99 (firmware 0.62.0)
 

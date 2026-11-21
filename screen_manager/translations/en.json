@@ -1536,6 +1536,10 @@
       },
       "script_running": "Running",
       "states": {
+        "grid": "Grid",
+        "generator": "Generator",
+        "shore_power": "Shore power",
+        "not_connected": "Not connected",
         "locking": "Locking",
         "unlocking": "Unlocking",
         "jammed": "Jammed",

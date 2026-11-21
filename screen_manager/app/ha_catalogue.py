@@ -276,7 +276,8 @@ def screen_word(entity_id, state, attributes, entry, words):
         return header_bar.short(header_bar.clean_text(durations.text(state, attributes['unit_of_measurement'], i18n.screen_language())), WORD_BYTES)
     if domain not in WORD_DOMAINS or (domain == 'sensor' and header_bar.numeric(state) is not None):
         return None
-    word = state_word(entity_id, state, attributes, entry, words)
+    word = (header_bar.state_text(state) if domain == 'sensor' and state in header_bar.INPUT_SOURCE_WORDS
+            else state_word(entity_id, state, attributes, entry, words))
     if not word:
         return None
     word = header_bar.short(header_bar.clean_text(word), WORD_BYTES)

@@ -293,3 +293,8 @@ class Charge(unittest.TestCase):
     def test_home_name(self):
         x = energy_flow.payload(self.prefs(None), self.states(50), home_name='Our house')
         self.assertEqual(x['n'], 'Our house')
+
+    def test_default_home_name_uses_the_screens_translated_label(self):
+        for name in ('', 'Home'):
+            with self.subTest(name=name):
+                self.assertNotIn('n', energy_flow.payload(self.prefs(None), self.states(50), home_name=name))

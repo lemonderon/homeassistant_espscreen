@@ -361,7 +361,9 @@ def payload(prefs: dict, states: dict[str, dict], glyph=None, home_name: str = '
         devices.append(item)
     if devices:
         out['d'] = devices
-    if home_name:
+    # HA's default name is a generic label; let the firmware use its translated Home word.
+    # A name the household chose still travels unchanged.
+    if home_name and home_name != 'Home':
         out['n'] = home_name[:32]
     # Beyond the eight, and the devices under the sankey's threshold: Home Assistant's "Other". What is left of the
     # house after every device is its "Untracked consumption", which the card works out itself.

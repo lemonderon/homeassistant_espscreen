@@ -37,10 +37,14 @@ TEXT_BYTES = 40
 MONTHS = ('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec')
 UNAVAILABLE = '—'
 
+# Power-source enum values have the same screen words in a top bar and on a sensor tile.
+INPUT_SOURCE_WORDS = {key: f'addon.screen.states.{key}' for key in ('grid', 'generator', 'shore_power', 'not_connected')}
+
 # Home Assistant's own words where they fit a small bar; the screen shows the rest as they come. The keys of the words,
 # which go in the screens' language (app 0.2.90): Home Assistant's own (screen.ha; a lock's are those of a lock sensor)
 # where the bar says the same, else the bar's ("Up" for above the horizon).
 STATES = {
+    **INPUT_SOURCE_WORDS,
     'on': 'screen.ha.on', 'off': 'screen.ha.off', 'home': 'screen.ha.person.home', 'not_home': 'screen.ha.person.not_home',
     'open': 'screen.ha.cover.open', 'closed': 'screen.ha.cover.closed', 'opening': 'screen.ha.cover.opening',
     'closing': 'screen.ha.cover.closing', 'locked': 'screen.ha.binary.lock_off', 'unlocked': 'screen.ha.binary.lock_on',

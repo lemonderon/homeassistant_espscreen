@@ -38,6 +38,11 @@ How the clock and numbers are written doesn't wait for a translation: `screen_ma
 every language Home Assistant offers, also from the CLDR. A Swedish Home Assistant gets English texts on the screens until
 there is a `sv.json`, but already the Swedish 24-hour clock and `1 234,5`.
 
+The app also translates power-source sensor states (`grid`, `generator`, `shore_power`, `not_connected`) for sensor
+tiles and top bars without changing their raw states in Home Assistant. The energy diagram uses its translated
+Home label when Home Assistant still has the generic name `Home`; custom household names stay unchanged.
+
+
 ## Check a language
 
 1. Open the file of your language, for example
